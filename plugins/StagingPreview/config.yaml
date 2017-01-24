@@ -1,0 +1,21 @@
+id: StagingPreview
+name: StagingPreview
+version: 0.1.0
+description: <__trans phrase="Changes entry preview feature to custom URL or to be hidden.">
+l10n_class: MT::StagingPreview::L10N
+
+settings:
+    preview_type:
+      Scope: blog
+      Default: normal
+    entry_custom_preview_url:
+      Scope: blog
+      Default:
+
+blog_config_template:
+    code: $StagingPreview::MT::StagingPreview::CMS::blog_config_template
+
+applications:
+    cms:
+        callbacks:
+            template_param.edit_entry: $StagingPreview::MT::StagingPreview::CMS::template_param_edit_entry

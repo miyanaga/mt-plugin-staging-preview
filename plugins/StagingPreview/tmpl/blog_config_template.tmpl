@@ -1,0 +1,24 @@
+<mtapp:setting
+  id="staging_preview_preview_url"
+  label="<__trans phrase='Preview Type'>"
+>
+  <ul>
+  <mt:loop name="preview_types">
+    <li>
+    <label>
+      <input type="radio" class="radio" name="preview_type" value="<mt:var name='value' />"<mt:if name="value" eq="$preview_type"> checked="checked"</mt:if> />
+      <mt:var name="label" />
+    </label>
+    </li>
+  </mt:loop>
+  </ul>
+</mtapp:setting>
+
+<mtapp:setting
+  id="staging_preview_preview_url"
+  label="<__trans phrase='Custom Preview URL'>"
+  show_hint="1"
+  hint="<__trans phrase='You can use Blog and Entry template tags such as mt:EntryBasename.'>"
+>
+  <input type="text" class="text" name="entry_custom_preview_url" value="<mt:var name='entry_custom_preview_url' escape='html' />"/>
+</mtapp:setting>

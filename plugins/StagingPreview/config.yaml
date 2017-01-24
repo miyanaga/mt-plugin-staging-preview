@@ -11,10 +11,15 @@ settings:
     entry_custom_preview_url:
       Scope: blog
       Default:
+    replace_permalink:
+      Scope: blog
+      Default: 0
 
 blog_config_template:
     code: $StagingPreview::MT::StagingPreview::CMS::blog_config_template
 
+callbacks:
+    init: $StagingPreview::MT::StagingPreview::CMS::init
 applications:
     cms:
         callbacks:

@@ -22,3 +22,14 @@
 >
   <input type="text" class="text" name="entry_custom_preview_url" value="<mt:var name='entry_custom_preview_url' escape='html' />"/>
 </mtapp:setting>
+
+<mtapp:setting
+  id="staging_preview_replace_permalink"
+  label="<__trans phrase='Entry Permalink'>"
+>
+  <label>
+    <input type="checkbox" class="cb" name="replace_permalink" value="1"<mt:if name="replace_permalink"> checked="checked"</mt:if> />
+    <__trans phrase="Replace entry permalink to custom preview url.">
+  </label>
+  <input type="hidden" name="replace_permalink" value="0" />
+</mtapp:setting>

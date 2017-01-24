@@ -17,6 +17,9 @@ use vars qw( %Lexicon );
 
     'To preview this entry, save as published first.' => 'プレビューを行うには公開状態で記事を保存してください。',
     'Preview is disabled.' => 'プレビュー機能は無効にされています。',
+
+    'Entry Permalink' => '記事の固有URL',
+    'Replace entry permalink to custom preview url.' => '記事の固有URLをプレビューURLに置き換える',
 );
 
 1;

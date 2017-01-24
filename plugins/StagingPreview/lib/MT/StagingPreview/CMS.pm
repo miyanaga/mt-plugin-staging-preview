@@ -62,13 +62,35 @@ EOJ
         $message ||= plugin->translate('Preview is disabled.');
         $param->{jq_js_include} .= <<"EOJ";
 (function() {
-    jQuery('button.preview').hide();
+    jQuery('button.preview, #permalink-field').hide();
     jQuery('<small />').text('$message').appendTo(jQuery('#entry-publishing-widget .widget-content'));
 })();
 EOJ
     }
 
     1;
+}
+
+sub init {
+    # 次のMT::Entry::permalink上書きのためのダミーフック
+    return 1;
+}
+
+use MT::Entry;
+
+{
+    no warnings qw( redefine );
+
+    my $__entry_permalink = \&MT::Entry::permalink;
+    *MT::Entry::permalink = sub {
+        my $entry = $_[0] || return;
+        my $config = plugin_config($entry->blog_id);
+        if ( $config->{replace_permalink} ) {
+            build(MT::ErrorHandler->new, $config->{entry_custom_preview_url}, { entry => $entry });
+        } else {
+            $__entry_permalink->(@_);
+        }
+    };
 }
 
 1;
